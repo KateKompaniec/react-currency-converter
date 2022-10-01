@@ -1,38 +1,112 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Inter', system-ui;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+}
+
+header{
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+
+h2{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1{
+  padding-left: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+select{
+  margin-left: .5rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.equals{
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+ul{
+  text-decoration: none;
+}
+
+.currency-rates-UAH{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10vw;
+  
+  
+}
+.rates-symbol{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1vw;
+  border: 2px solid #fff;
+  border-radius: .5rem;
+  padding: .3rem;
+  background-color: #fff;
+  color: #333;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  
+}
+.main-conteiner{
+  
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  text-align: center;
+
+}
+.block {
+    border: 1px solid rgba(151, 149, 149, 0.1);
+    font-size: 5rem;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.currencies {
+  display: flex;
+  border-radius: 5px;
+  gap: 5rem;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.currencies div{
+  display: inline-flex;
+  padding: 10px 20px;
+    justify-content: center;
+    flex: 1;
+}
+input{
+  width: 10rem;
+  padding: .3rem;
+  height: 5rem;
+}
+
+input,select{
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius:.5rem;
 }
