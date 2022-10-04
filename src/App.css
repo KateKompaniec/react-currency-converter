@@ -50,6 +50,9 @@ ul{
   
   
 }
+.loading{
+  text-align: center;
+}
 .rates-symbol{
   display: flex;
   flex-direction: row;

@@ -1,6 +1,7 @@
 import React from "react";
 import CurrencyConvert from "./CurrencyConvert";
 import { useState, useEffect } from "react";
+import useApiFetch from "../../hooks/useApiFetch";
 
 const BASE_URL = "https://api.apilayer.com/fixer/latest"
 const ACCESS_KEY = "ES1bAiUliGSAJQwo6cOfWGX2z9Sat1mN"
@@ -15,14 +16,14 @@ const requestOptions = {
 
 export default function Converter() {
 
+    //const {data, loading, error} = useApiFetch(BASE_URL)
+    //const {dataToConvert, loading, error} = useApiFetch(BASE_URL,[fromCurrency, toCurrency])
     const [currencyOptions, setOptions] = useState([])
     const [fromCurrency, setFromCurrency] = useState()
     const [toCurrency, setToCurrency] = useState()
     const [amount, setAmount] = useState(1)
     const [amountInFromCurrency, setAmountInFromCurrency] = useState(true)
     const [exchangeRate, setExchangeRate] = useState(0)
-   
-
 
     let toAmount, fromAmount
     if (amountInFromCurrency) {
@@ -44,7 +45,7 @@ export default function Converter() {
             setExchangeRate(data.rates[firstCurrency])
           })
           .catch(error => console.log('error', error));
-      }, [])
+      }, [])  
     
       useEffect(() => {
         if (fromCurrency != null && toCurrency != null) {
@@ -62,7 +63,7 @@ export default function Converter() {
         setAmount(e.target.value)
         setAmountInFromCurrency(false)
     } 
-
+   
     return (
         <section className='main-conteiner'>
             <h2>
