@@ -1,23 +1,24 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
-import useApiFetch from '../../hooks/useApiFetch';
+import {  useEffect } from 'react';
+import { fetchHeaderUAH } from '../../api';
+import { useApi } from '../../hooks/useApi';
 import HeaderCurrencyRatesUAH from './HeaderCurrencyRatesUAH';
 
 const BASE_URL = "https://api.apilayer.com/fixer/latest"
+//const BASE_URL ="https://api.currencyapi.com/v3/latest"
+
 
 
 export default function Header() {
-    const {data} = useApiFetch(`${BASE_URL}?symbols=USD%2CEUR%2CPLN&base=UAH`)
-    /* const [currentDate, setCurrentDate] = useState("")
-  const [ratesToUAH, setRates] = useState([]) */
+    const [currencyDataUAH, setcurrencyDataUAH] = useApi(()=>fetchHeaderUAH())
 
-    console.log(data);
+    //console.log(currencyDate);
     
     
-    /* useEffect(() => {
-          setRates(data.rates)
-            setCurrentDate(data.date)}
-      , [])  */
+     useEffect(() => {
+        setcurrencyDataUAH();
+          }
+      , [])  
 
     function getValidDate(date) {
         return date.split("-").reverse().join(".");
@@ -25,13 +26,13 @@ export default function Header() {
 
   return (
     <header>
-        {!data && <div className='loading'>Loading...</div>}
+        {!currencyDataUAH && <div className='loading'>Loading...</div>}
         <div className='currency-rates-UAH-text'>
-            {data &&  <h2>Currency rates for {`${getValidDate(data.date)}`}</h2>}
+            {currencyDataUAH &&  <h2>Currency rates for {`${getValidDate(currencyDataUAH.date)}`}</h2>}
         </div>
         <div className='currency-rates-UAH'>
-          { data &&
-            Object.entries(data.rates).map(([key, value]) => (
+          { currencyDataUAH &&
+            Object.entries(currencyDataUAH.rates).map(([key, value]) => (
               <HeaderCurrencyRatesUAH key={`${key, value}`} symbol={key} value={value} ></HeaderCurrencyRatesUAH>
             ))
           }
